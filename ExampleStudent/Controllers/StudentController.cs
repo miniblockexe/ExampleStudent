@@ -8,6 +8,7 @@ namespace ExampleStudent.Controllers
     [Authorize]
     public class StudentController : Controller
     {
+        //private IStudentRepository _studentRepository;
         private readonly SchoolDbContext context;
        
         public StudentController(SchoolDbContext _context)
