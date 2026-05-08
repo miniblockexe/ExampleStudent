@@ -1,5 +1,6 @@
 using ExampleStudent.Data;
 using ExampleStudent.Models.Domain;
+using ExampleStudent.Models.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SchoolDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("school")));
 
+builder.Services.AddScoped<IStudentRepository, StudentRepository>();
 
 builder.Services.AddAutoMapper(typeof(Program));
 
