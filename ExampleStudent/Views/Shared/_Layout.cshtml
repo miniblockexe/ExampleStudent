@@ -18,7 +18,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ExampleStudent</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
@@ -42,6 +42,34 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Manage" asp-action="Index">Manage User Role</a>
                         </li>
                     </ul>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="RoleManager" asp-action="Index">Manage Roles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="UserRoles" asp-action="Index">Manage User Role</a>
+                        </li>
+                    }
+                  @*   @foreach (var item in Model)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <td><a class="btn btn-primary" href="/Student/GetStudentById/@item.Id">Chi tiết</a></td>
+                            <td><a class="btn btn-primary" href="/Student/EditStudentById/@item.Id">Chỉnh sửa</a></td>
+                            <td><a class="btn btn-danger" href="/Student/DelStudentById/@item.Id">Xóa</a></td>
+                        }
+                        else if (User.IsInRole("Editor"))
+                        {
+                            <td><a class="btn btn-primary" href="/Student/GetStudentById/@item.Id">Chi tiết</a></td>
+                            <td><a class="btn btn-primary" href="/Student/EditStudentById/@item.Id">Chỉnh sửa</a></td>
+                        }
+                        else
+                        {
+                            <td><a class="btn btn-primary" href="/Student/GetStudentById/@item.Id">Chi tiết</a></td>
+                        }
+
+                    } *@
                     <ul class="navbar-nav">
                         @if (SignInManager.IsSignedIn(User))
                         {

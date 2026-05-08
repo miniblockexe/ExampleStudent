@@ -166,6 +166,8 @@ namespace ExampleStudent.Controllers
         //        return View();
         //    }
         //}
+        [Authorize(Roles ="Admin,Editor")]
+        [HttpGet]
         public IActionResult EditStudentById(int id)
         {
             var studentVM = _studentRepository.GetStudentsById(id);
@@ -178,7 +180,7 @@ namespace ExampleStudent.Controllers
                 return View("NotFound");
             }
         }
-
+        [Authorize(Roles = "Admin,Editor")]
         [HttpPost]
         public IActionResult EditStudentById([FromRoute] int id, VMStudent student)
         {
@@ -210,12 +212,13 @@ namespace ExampleStudent.Controllers
                 return View();
             }
         }
+        [Authorize(Roles = "Admin,Editor")]
         [HttpGet]
         public IActionResult AddStudent()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin,Editor")]
         [HttpPost]
         public IActionResult AddStudent(VMStudent studentData)
         {
@@ -239,7 +242,7 @@ namespace ExampleStudent.Controllers
                 return View();
             }
         }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult DelStudentById(int id)
         {
             var StudentById = _studentRepository.GetStudentsById(id);
